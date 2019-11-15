@@ -30,6 +30,11 @@ You also need to have the following dependencies in your project:
 JSON.NET for Unity is needed becouse of the InfluxDB client library depends on Newtonsoft namespace.
 
 ## Usage
+There is a Prefab named 'EventBus'. This gameobject needs to be added to the scene with the tag 'Eventbus'. Otherwise you won't subscribe to the Server-Side Event stream from OpenHAB server. That's crucial for
+the setup to work.
+
+See the Demo scene under 'Demo/_Scenes/Widget Demo.scene' for more information. Keep in mind that you must change the item components setup, server setup and InfluxDB settings to be able to test on your system.
+
 More info coming...when I can find the time. =)
 
 ## Contributing
