@@ -37,6 +37,12 @@ See the Demo scene under 'Demo/_Scenes/Widget Demo.scene' for more information. 
 
 More info coming...when I can find the time. =)
 
+## On the TODO list
+* Eventbus status check and presentation in UI
+* Continous DB query and updates.
+* Designing some usable theme elements for demo. (Not Unity UI standard look and feel)
+* Create a widget similar to the "Timeline" widget in HabPanel.
+
 ## Contributing
 Pull requests are welcome.
 
