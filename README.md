@@ -35,6 +35,8 @@ the setup to work.
 
 See the Demo scene under 'Demo/_Scenes/Widget Demo.scene' for more information. Keep in mind that you must change the item components setup, server setup and InfluxDB settings to be able to test on your system.
 
+[See demo video here.](https://youtu.be/FQb78mdTZLY)
+
 More info coming...when I can find the time. =)
 
 ## On the TODO list
