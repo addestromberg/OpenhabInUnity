@@ -11,7 +11,7 @@ I then realized that this could all be applied to whatever item in OpenHab I wan
 Be aware, Im a single-, mediocre-, self tought-, hobby programmer. The software should NOT be used in commercial projects. 
 I have not spent lot of time thinking about security etc. but mostly just wanted to make things work. 
 
-Anyone interested can make a pull request would be very welcome.
+Anyone interested are more then welcome to make a pullrequest.
 
 ## Installation
 Clone or Download the repo to whatever folder you wan't in the Assets folder in your Unity project. I used Unity 2019.1.7f1 to test the

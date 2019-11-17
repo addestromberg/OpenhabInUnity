@@ -1,10 +1,5 @@
-﻿using K.Debug;
-using Proyecto26;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Proyecto26;
 using UnityEngine;
-
 
 namespace se.Studio13.OpenHabUnity
 {

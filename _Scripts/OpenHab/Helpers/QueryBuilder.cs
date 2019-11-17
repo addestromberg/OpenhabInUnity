@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 namespace se.Studio13.OpenHabUnity
 {
     /// <summary>

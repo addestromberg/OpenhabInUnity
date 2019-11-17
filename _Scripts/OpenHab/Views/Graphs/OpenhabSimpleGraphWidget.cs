@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using Vibrant.InfluxDB.Client;
 using Vibrant.InfluxDB.Client.Rows;
+//using ChartAndGraph;
 
 namespace se.Studio13.OpenHabUnity
 {
@@ -48,6 +45,7 @@ namespace se.Studio13.OpenHabUnity
         public string _TimeSpan = "now() - 24h"; 
 
         private InfluxController _influxController;
+        //private GraphChart _graph; // Chart And Graph asset in unity store.
 
         /// <summary>
         /// Initialize ItemController
@@ -71,6 +69,8 @@ namespace se.Studio13.OpenHabUnity
             {
                 _influxController.Initialize(_Server, _Item);
             }
+
+
             
             InitWidget();
 
@@ -83,6 +83,8 @@ namespace se.Studio13.OpenHabUnity
         /// </summary>
         private void InitWidget()
         {
+            // if (_graph == null) _graph = GetComponent<GraphChart>();
+            
             StartCoroutine(RefreshGraph()); // Lazyguy timer
         }
 
@@ -105,11 +107,25 @@ namespace se.Studio13.OpenHabUnity
         {
             InfluxResultSet<DynamicInfluxRow> result = await _influxController.SimpleQuery(QueryBuilder.ItemTimeSpan(_Database, _RetentionPolicy, _Item, _TimeSpan));
             //var series = result.Results[0].Series[0].Name;
-            Debug.Log("result: " + result.Results[0].Series.Count);
-            /**foreach (DynamicInfluxRow row in series.Rows)
+
+            var series = result.Results[0].Series[0];
+            Debug.Log("result: " + result.Results[0].Series.Count + " rows: " + series.Rows.Count);
+
+            /// This is how you can do if using Chart And Graph.
+            /**
+            if (_graph != null)
             {
-                Debug.Log("Time: " + row.GetField("time") + row.GetField("value"));
-            }*/
+                _graph.DataSource.StartBatch();  // start a new update batch
+                _graph.DataSource.ClearCategory("CPU Load");  // clear the categories we have created in the inspector
+
+                foreach (DynamicInfluxRow row in series.Rows)
+                {
+                    _graph.DataSource.AddPointToCategory("CPU Load", row.GetTimestamp().Value, float.Parse(row.GetField("value").ToString()));                    
+                }
+                _graph.DataSource.EndBatch(); // end the update batch . this call will render the graph
+            }
+            */
+            
         }
 
         /// <summary>
