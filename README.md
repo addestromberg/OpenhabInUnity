@@ -33,6 +33,14 @@ JSON.NET for Unity is needed becouse of the InfluxDB client library depends on N
 There is a Prefab named 'EventBus'. This gameobject needs to be added to the scene with the tag 'Eventbus'. Otherwise you won't subscribe to the Server-Side Event stream from OpenHAB server. That's crucial for
 the setup to work.
 
+####The following widgets is available:
+* Dummy (Simple text or number presentation)
+* Switch
+* Image (From item URL source)
+* Dimmer (Simple slider for Dimmer items, volume etc.)
+* Player (Example of how to build a Player controller from a Player item. ie. Chromecast or spotify)
+* Simple status icon widget to show if application is connected to Openhab's Eventbus.
+
 See the Demo scene under 'Demo/_Scenes/Widget Demo.scene' for more information. Keep in mind that you must change the item components setup, server setup and InfluxDB settings to be able to test on your system.
 
 [See demo video here.](https://youtu.be/FQb78mdTZLY)
@@ -40,7 +48,7 @@ See the Demo scene under 'Demo/_Scenes/Widget Demo.scene' for more information. 
 More info coming...when I can find the time. =)
 
 ## On the TODO list
-* Eventbus status check and presentation in UI
+* ~~Eventbus status check and presentation in UI~~
 * Continous DB query and updates.
 * Designing some usable theme elements for demo. (Not Unity UI standard look and feel)
 * Create a widget similar to the "Timeline" widget in HabPanel.

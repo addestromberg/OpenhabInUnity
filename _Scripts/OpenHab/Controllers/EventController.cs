@@ -12,14 +12,16 @@ namespace se.Studio13.OpenHabUnity
     /// </summary>
     class EventController : MonoBehaviour
     {
+        [SerializeField]
+        private bool _isConnected = false;
         public string _serverUri = "http://openhab:8080";
         public List<GameObject> _subscribers;
 
         private EventSourceReader _evt;
         
 
-        public delegate void OnLostEventBus();
-        public OnLostEventBus lostEventBus;
+        public delegate void OnConnectedEventBus(bool eventbusConnection);
+        public OnConnectedEventBus connectedEventBus;
 
         void Start()
         {
@@ -61,7 +63,8 @@ namespace se.Studio13.OpenHabUnity
             _evt = new EventSourceReader(UriBuilder.GetEventStreamUri(_serverUri)).Start();
             _evt.MessageReceived += (object sender, EventSourceMessageEventArgs e) => NewEvent(e);
             _evt.Disconnected += async (object sender, DisconnectEventArgs err) => {
-                //lostEventBus(); // Lost the eventbus, handle thiswith reconnection after 3 secs.
+                _isConnected = false;
+                connectedEventBus?.Invoke(false); // Lost the eventbus, handle thiswith reconnection after 3 secs.
                 Console.WriteLine($"Retry in: {err.ReconnectDelay} - Error: {err.Exception}");
                 await Task.Delay(err.ReconnectDelay);
                 _evt.Start(); // Reconnect to the same URL
@@ -75,6 +78,12 @@ namespace se.Studio13.OpenHabUnity
         /// <param name="e">event of type EvenSourceMessageEventArgs</param>
         private void NewEvent(EventSourceMessageEventArgs e)
         {
+            if (!_isConnected)
+            {
+                _isConnected = true;
+                connectedEventBus?.Invoke(true);
+                Debug.Log("Connected to OpenHab Eventbus again.");
+            }
             EventModel ev = JsonUtility.FromJson<EventModel>(e.Message);
             ev.Parse();
             //Debug.Log("NewEvent!!!\nParsed new Object:\n" + ev.ToString());
