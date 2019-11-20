@@ -33,7 +33,7 @@ JSON.NET for Unity is needed becouse of the InfluxDB client library depends on N
 There is a Prefab named 'EventBus'. This gameobject needs to be added to the scene with the tag 'Eventbus'. Otherwise you won't subscribe to the Server-Side Event stream from OpenHAB server. That's crucial for
 the setup to work.
 
-###The following widgets is available:
+#### The following widgets is available:
 * Dummy (Simple text or number presentation)
 * Switch
 * Image (From item URL source)
