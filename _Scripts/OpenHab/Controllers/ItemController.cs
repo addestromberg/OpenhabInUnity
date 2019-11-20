@@ -158,6 +158,48 @@ namespace se.Studio13.OpenHabUnity
         }
 
         /// <summary>
+        /// Set a Player Item Play/Pause state
+        /// </summary>
+        /// <param name="newState"></param>
+        public void SetItemStateAsPlayerPlayPause(bool newState)
+        {
+            if(newState)
+            {
+                SetItemOnServer("PLAY");
+            } else
+            {
+                SetItemOnServer("PAUSE");
+            }
+        }
+
+        /// <summary>
+        /// Search functions on Player Item
+        /// </summary>
+        /// <param name="cmd">ff = Fastforward, rw = Rewind, next = Next, prev = Previous</param>
+        public void SetItemStateAsPlayerSearch(string cmd)
+        {
+            switch (cmd)
+            {
+                case "ff":
+                    SetItemOnServer("FASTFORWARD");
+                    break;
+                case "rw":
+                    SetItemOnServer("REWIND");
+                    break;
+                case "next":
+                    SetItemOnServer("NEXT");
+                    break;
+                case "prev":
+                    SetItemOnServer("PREVIOUS");
+                    break;
+                default:
+                    Debug.Log("Command is not recognized by player item");
+                    break;
+            }
+        }
+
+
+        /// <summary>
         /// Getter for item ID
         /// </summary>
         /// <returns></returns>
