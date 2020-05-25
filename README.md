@@ -25,7 +25,7 @@ You also need to have the following dependencies in your project:
 * [REST Client for Unity](https://github.com/proyecto26/RestClient)
 
 ### Exluded in package file but available for free on AssetStore:
-* [JSON.NET for Unity](https://assetstore.unity.com/detail/tools/input-management/json-net-for-unity-11347)
+* [JSON.NET for Unity](https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347)
 
 JSON.NET for Unity is needed becouse of the InfluxDB client library depends on Newtonsoft namespace.
 
